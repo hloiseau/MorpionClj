@@ -1,13 +1,52 @@
 <html>
-  <head>
-    <style>
-      button {
-               width: 15px;
-               height: 15px;
-             }
-    </style>
-  </head>
-  <p><a href="?clicked=1&usedX={{usedX}}&usedY={{usedY}}"><button>{{content1}}</button></a><a href="?clicked=2&usedX={{usedX}}&usedY={{usedY}}"><button>{{content2}}</button></a><a href="?clicked=3&usedX={{usedX}}&usedY={{usedY}}"><button>{{content3}}</button></a></p>
-  <p><a href="?clicked=4&usedX={{usedX}}&usedY={{usedY}}"><button>{{content4}}</button></a><a href="?clicked=5&usedX={{usedX}}&usedY={{usedY}}"><button>{{content5}}</button></a><a href="?clicked=6&usedX={{usedX}}&usedY={{usedY}}"><button>{{content6}}</button></a></p>
-  <p><a href="?clicked=7&usedX={{usedX}}&usedY={{usedY}}"><button>{{content7}}</button></a><a href="?clicked=8&usedX={{usedX}}&usedY={{usedY}}"><button>{{content8}}</button></a><a href="?clicked=9&usedX={{usedX}}&usedY={{usedY}}"><button>{{content9}}</button></a></p>
+
+<head>
+  <style>
+    button {
+      width: 150px;
+      height: 150px;
+      font-size: 125px;
+    }
+
+    .wrapper {
+      display: grid;
+      grid-template-columns: 150px 150px 150px;
+      grid-gap: 10px;
+      grid-template-areas: ". . .";
+      justify-content: center;
+      margin-top: 8em;
+    }
+
+    #myVideo {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -10;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <a href="?clicked=1&usedX={{usedX}}&usedY={{usedY}}"><button>{{content1}}</button></a>
+    <a href="?clicked=2&usedX={{usedX}}&usedY={{usedY}}"><button>{{content2}}</button></a>
+    <a href="?clicked=3&usedX={{usedX}}&usedY={{usedY}}"><button>{{content3}}</button></a>
+    <a href="?clicked=4&usedX={{usedX}}&usedY={{usedY}}"><button>{{content4}}</button></a>
+    <a href="?clicked=5&usedX={{usedX}}&usedY={{usedY}}"><button>{{content5}}</button></a>
+    <a href="?clicked=6&usedX={{usedX}}&usedY={{usedY}}"><button>{{content6}}</button></a>
+    <a href="?clicked=7&usedX={{usedX}}&usedY={{usedY}}"><button>{{content7}}</button></a>
+    <a href="?clicked=8&usedX={{usedX}}&usedY={{usedY}}"><button>{{content8}}</button></a>
+    <a href="?clicked=9&usedX={{usedX}}&usedY={{usedY}}"><button>{{content9}}</button></a>
+  </div>
+
+  <video autoplay muted loop id="myVideo">
+    <source
+      src="https://static.videezy.com/system/resources/previews/000/050/238/original/Moving_In_The_Block_Retro_01.mp4"
+      type="video/mp4">
+  </video>
+</body>
+
 </html>
