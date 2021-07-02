@@ -10,17 +10,24 @@
 (defn home-page
     []
     (page/html5
-        [:h1 "Home"]
+        [:head 
+        [:title "Morpion"] 
+        (page/include-css "style.css")]
+        [:h1 "Morpion"]
         ( 
           game/print-morpion (game/make-morpion) 1 false
-        ) 
+        )
     )
 )
 
 (defn home-page2
     [{x :x y :y plateau :plateau player :player}]
     (page/html5
-        [:h1 "Home"]
+        [:head 
+        [:title "Morpion"] 
+        (page/include-css "style.css")]
+        [:body
+        [:h1 "Morpion"]
        (if (= false (game/winning-morpion? ( game/set-case-morpion (json/read-str plateau) (Integer/parseInt player) (Integer/parseInt x) (Integer/parseInt y ) ) ) )
 
         (if (game/legal-move-morpion? (json/read-str plateau) (Integer/parseInt x) (Integer/parseInt y ) ) 
@@ -44,7 +51,8 @@
        )
       [:br 
        [:a {:href (str "/")}
-       [:button "Reset"]] 
+       [:button {:style "width: 380px;"} "Reset"]] 
+      ]
       ]
     )
 )

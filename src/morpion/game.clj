@@ -18,14 +18,12 @@
             0 "."
             1 "X"
             2 "O"))
-        [:div
+        [:div {:class "wrapper"}
         (for [x (range 3) y (range 3) ]
              (if (= false win) [:a {:href (str "play?x=" x "&&y=" y "&&plateau=" (json/write-str plateau) "&&player=" player)}
               [:button (pcase (get-case-morpion plateau x y))]
-              ( if(= y 2) [:br])
              ]
-             [:a [:button (pcase (get-case-morpion plateau x y))]
-             ( if(= y 2) [:br])]
+             [:a [:button (pcase (get-case-morpion plateau x y))]]
              )
           )
         ]
