@@ -5,8 +5,10 @@
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]))
 
 (defroutes app-routes
-  (GET "/" [] (views/home-page))
-  (GET "/play" {params :params} (views/home-page2 params) )
+  (GET "/" [] (views/main-page))
+  (POST "/choose-page" {params :params} (views/choose-page params))
+  (GET "/launchGame" [] (views/launch-game-page))
+  (GET "/play" {params :params} (views/play-page params) )
   (route/resources "/")
   (route/not-found "Not Found")
 )
