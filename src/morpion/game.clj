@@ -12,7 +12,7 @@
     (get plateau (+ i (* 3 j))))
   
   
-    (defn print-morpion [plateau player]
+    (defn print-morpion [plateau player win]
         (defn pcase [c]
           (case c
             0 "."
@@ -20,13 +20,17 @@
             2 "O"))
         [:div
         (for [x (range 3) y (range 3) ]
-             [:a {:href (str "play?x=" x "&&y=" y "&&plateau=" (json/write-str plateau) "&&player=" player)}
+             (if (= false win) [:a {:href (str "play?x=" x "&&y=" y "&&plateau=" (json/write-str plateau) "&&player=" player)}
               [:button (pcase (get-case-morpion plateau x y))]
               ( if(= y 2) [:br])
              ]
+             [:a [:button (pcase (get-case-morpion plateau x y))]
+             ( if(= y 2) [:br])]
+             )
           )
         ]
       )
+    
   
   
   (defn set-case-morpion [plateau player i j]

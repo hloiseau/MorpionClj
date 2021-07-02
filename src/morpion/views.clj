@@ -12,7 +12,7 @@
     (page/html5
         [:h1 "Home"]
         ( 
-          game/print-morpion (game/make-morpion) 1
+          game/print-morpion (game/make-morpion) 1 false
         ) 
     )
 )
@@ -21,21 +21,31 @@
     [{x :x y :y plateau :plateau player :player}]
     (page/html5
         [:h1 "Home"]
+       (if (= false (game/winning-morpion? ( game/set-case-morpion (json/read-str plateau) (Integer/parseInt player) (Integer/parseInt x) (Integer/parseInt y ) ) ) )
+
         (if (game/legal-move-morpion? (json/read-str plateau) (Integer/parseInt x) (Integer/parseInt y ) ) 
             ( 
                 game/print-morpion (game/set-case-morpion (json/read-str plateau) (Integer/parseInt player) (Integer/parseInt x) (Integer/parseInt y ) )
                 (if (= (Integer/parseInt player) 1) 2 1)
+                false
             )
 
             ( 
-                game/print-morpion (json/read-str plateau) (Integer/parseInt player)
+                game/print-morpion (json/read-str plateau) (Integer/parseInt player) false
             ) 
         )
-       (
-        if ( game/winning-morpion? ( game/set-case-morpion (json/read-str plateau) (Integer/parseInt player) (Integer/parseInt x) (Integer/parseInt y )) ) 
-        [:a {:href (str "/")}
-        [:button "Reset"]] 
+
+        ( 
+            game/print-morpion ( game/set-case-morpion (json/read-str plateau) (Integer/parseInt player) (Integer/parseInt x) (Integer/parseInt y ) )
+            (Integer/parseInt player)
+            true
+        ) 
+
        )
+      [:br 
+       [:a {:href (str "/")}
+       [:button "Reset"]] 
+      ]
     )
 )
 
