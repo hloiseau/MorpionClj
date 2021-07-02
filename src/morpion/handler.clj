@@ -6,7 +6,10 @@
 
 (defroutes app-routes
   (GET "/" [] (views/home-page))
-  (route/not-found "Not Found"))
+  (GET "/play" {params :params} (views/home-page2 params) )
+  (route/resources "/")
+  (route/not-found "Not Found")
+)
 
 (def app
   (wrap-defaults app-routes site-defaults))
