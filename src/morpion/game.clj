@@ -1,6 +1,7 @@
 (ns morpion.game
     (:require 
         [clojure.string :as str]
+        [clojure.data.json :as json]
         [hiccup.page :as page]
         [ring.util.anti-forgery :as util]))
 
@@ -11,7 +12,7 @@
     (get plateau (+ i (* 3 j))))
   
   
-    (defn print-morpion [plateau]
+    (defn print-morpion [plateau player]
         (defn pcase [c]
           (case c
             0 "."
@@ -19,7 +20,7 @@
             2 "O"))
         [:div
         (for [x (range 3) y (range 3) ]
-             [:a {:href (str "play?x=" x "&&y=" y)}
+             [:a {:href (str "play?x=" x "&&y=" y "&&plateau=" (json/write-str plateau) "&&player=" player)}
               [:button (pcase (get-case-morpion plateau x y))]
               ( if(= y 2) [:br])
              ]
