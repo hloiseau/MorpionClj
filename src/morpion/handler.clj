@@ -8,6 +8,7 @@
   (GET "/" [] (views/main-page))
   (POST "/choose-page" {params :params} (views/choose-page params))
   (GET "/launchGame" [] (views/launch-game-page))
+  (GET "/score" [] (views/score-page))
   (GET "/play" {params :params} (views/play-page params) )
   (route/resources "/")
   (route/not-found "Not Found")

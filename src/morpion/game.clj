@@ -30,7 +30,6 @@
       )
     
   
-  
   (defn set-case-morpion [plateau player i j]
     (assoc plateau (+ i (* 3 j)) player))
   

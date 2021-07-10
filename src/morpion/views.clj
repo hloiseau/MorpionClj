@@ -33,7 +33,7 @@
 ]
        
 [:br 
-    [:a {:href (str "" )}
+    [:a {:href (str "/score" )}
     [:button {:style "width: 380px;"} "All Score"]]
 ] 
     )
@@ -52,6 +52,17 @@
         )
     )
 )
+
+(defn score-page
+    []
+    (let [all-scores (db/get-all-score)]
+        (println all-scores)
+      (page/html5
+       [:h1 "All Scores"]
+       [:table
+        [:tr [:th "PlayerName"] [:th "  Number of Games"] [:th "  Number of Win"]]
+        (for [score all-scores]
+          [:tr [:td (:playername score)] [:td (:countplay score)] [:td (:winplay score)]])])))
 
 (defn play-page 
     [{x :x y :y plateau :plateau player :player}]
