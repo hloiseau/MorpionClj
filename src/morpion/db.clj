@@ -19,3 +19,11 @@
 (defn get-all-score
   []
   (jdbc/query db-spec "select playerName, winPlay, countPlay from player"))
+
+  (defn update-score
+    [hasWin playerName]
+    (jdbc/execute! db-spec
+      [(str "update player set countPlay = countPlay + 1" (if (= true hasWin) ", winPlay = winPlay + 1") "where playerName = '" playerName "'")]
+    )
+  ) 
+ 

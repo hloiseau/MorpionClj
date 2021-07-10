@@ -56,7 +56,6 @@
 (defn score-page
     []
     (let [all-scores (db/get-all-score)]
-        (println all-scores)
       (page/html5
        [:h1 "All Scores"]
        [:table
@@ -94,6 +93,7 @@
         ) 
 
        )
+
       [:br 
        [:a {:href (str "/launchGame")}
        [:button {:style "width: 380px;"} "Reset"]] 
